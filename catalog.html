@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Онлайн-магазин одягу</title>
+    <!-- Підключення Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Підключення Font Awesome для іконок -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="#"><i class="fas fa-tshirt"></i> FashionStore</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link " href="/index.html"><i class="fas fa-home"></i> Головна</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/catalog.html"><i class="fas fa-tshirt"></i> Каталог</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contacts"><i class="fas fa-envelope"></i> Контакти</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <main class="container my-5">
+            <div class="row">
+                <!-- Панель фільтрів -->
+                <aside class="col-md-3">
+                    <h5>Фільтри</h5>
+                    <div class="mb-3">
+                        <label for="priceFilter" class="form-label">Ціна до</label>
+                        <input type="range" class="form-range" id="priceFilter" min="100" max="2000" value="2000">
+                        <span id="priceValue">2000 ₴</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="sizeFilter" class="form-label">Розмір</label>
+                        <select class="form-select" id="sizeFilter">
+                            <option value="all" selected>Усі розміри</option>
+                            <option value="36/38">36/38</option>
+                            <option value="42/44">42/44</option>
+                            <option value="46/48">46/48</option>
+                            <option value="50/52">50/52</option>
+                        </select>
+                    </div>
+                </aside>
+                <div id="imageModal" class="modal" onclick="closeModal()">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <img id="modalImage" class="modal-content" />
+                    <div id="caption"></div>
+                </div>
+                <!-- Список товарів -->
+                <section class="col-md-9">
+                    <h2 class="text-center mb-4">Наш каталог</h2>
+                    <div class="row" id="productList">
+                        <!-- Товари будуть додаватись через main.js -->
+                    </div>
+                </section>
+            </div>
+        </main>
+        
+        </main>
+        
+    </main>
+
+    <div id="cart">
+        <h3>Кошик</h3>
+        <div id="cartCount">Товари в кошику: 0</div>
+        <div id="cartList"></div>
+        <div id="totalPrice">Загальна вартість: 0 ₴</div>
+        <button id="checkoutBtn" class="submit-button">Оформити замовлення</button>
+    </div>    
+    <!-- успішне замовлення -->
+    <div id="successMessage" class="success-message">
+        <span class="checkmark">&#10003;</span>
+        <span class="message">Ваше замовлення оформлено успішно! Дякуємо за покупку.</span>
+    </div>
+    
+    <footer id="contacts" class="footer bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <!-- Блок з контактною інформацією -->
+                <div class="col-md-4">
+                    <h5>Контакти</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone"></i> +380 99 123 45 67</li>
+                        <li><i class="fas fa-envelope"></i> support@fashionstore.ua</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Київ, вул. Стильна, 10</li>
+                    </ul>
+                </div>
+                <!-- Блок з посиланнями -->
+                <div class="col-md-4">
+                    <h5>Корисні посилання</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light"><i class="fas fa-chevron-right"></i> Про нас</a></li>
+                        <li><a href="#" class="text-light"><i class="fas fa-chevron-right"></i> Доставка</a></li>
+                        <li><a href="#" class="text-light"><i class="fas fa-chevron-right"></i> Політика конфіденційності</a></li>
+                    </ul>
+                </div>
+                <!-- Блок з соціальними мережами -->
+                <div class="col-md-4">
+                    <h5>Ми в соцмережах</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram fa-2x"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-telegram fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 FashionStore. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Підключення Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Підключення Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <script src="/JS/main.js"></script>
+</body>
+</html>
